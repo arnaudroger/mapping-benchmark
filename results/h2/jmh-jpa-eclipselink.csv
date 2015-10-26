@@ -1,0 +1,9 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._04Fields","thrpt",1,200,155930.935944,790.744572,"ops/s",H2,1
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._04Fields","thrpt",1,200,83440.012106,417.159596,"ops/s",H2,10
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._04Fields","thrpt",1,200,13492.588493,47.564975,"ops/s",H2,100
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._04Fields","thrpt",1,200,1486.418546,4.136399,"ops/s",H2,1000
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._16Fields","thrpt",1,200,103676.508806,840.149980,"ops/s",H2,1
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._16Fields","thrpt",1,200,43624.141492,105.941635,"ops/s",H2,10
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._16Fields","thrpt",1,200,6177.169198,16.758056,"ops/s",H2,100
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._16Fields","thrpt",1,200,650.538403,1.536870,"ops/s",H2,1000

@@ -1,0 +1,17 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.sql2o.Sql2OBenchmark._04Fields","thrpt",1,200,182014.331055,582.534655,"ops/s",H2,1
+"org.simpleflatmapper.sql2o.Sql2OBenchmark._04Fields","thrpt",1,200,141348.901849,307.886968,"ops/s",H2,10
+"org.simpleflatmapper.sql2o.Sql2OBenchmark._04Fields","thrpt",1,200,43413.291918,213.948030,"ops/s",H2,100
+"org.simpleflatmapper.sql2o.Sql2OBenchmark._04Fields","thrpt",1,200,5298.403887,38.480180,"ops/s",H2,1000
+"org.simpleflatmapper.sql2o.Sql2OBenchmark._16Fields","thrpt",1,200,153006.368509,473.023976,"ops/s",H2,1
+"org.simpleflatmapper.sql2o.Sql2OBenchmark._16Fields","thrpt",1,200,85551.000644,202.984212,"ops/s",H2,10
+"org.simpleflatmapper.sql2o.Sql2OBenchmark._16Fields","thrpt",1,200,15515.912214,82.640234,"ops/s",H2,100
+"org.simpleflatmapper.sql2o.Sql2OBenchmark._16Fields","thrpt",1,200,1683.232372,6.011847,"ops/s",H2,1000
+"org.simpleflatmapper.sql2o.Sql2OSfmBenchmark._04Fields","thrpt",1,200,198628.578630,228.441793,"ops/s",H2,1
+"org.simpleflatmapper.sql2o.Sql2OSfmBenchmark._04Fields","thrpt",1,200,174589.213210,588.998377,"ops/s",H2,10
+"org.simpleflatmapper.sql2o.Sql2OSfmBenchmark._04Fields","thrpt",1,200,79642.844326,713.686926,"ops/s",H2,100
+"org.simpleflatmapper.sql2o.Sql2OSfmBenchmark._04Fields","thrpt",1,200,11358.334249,139.039597,"ops/s",H2,1000
+"org.simpleflatmapper.sql2o.Sql2OSfmBenchmark._16Fields","thrpt",1,200,178054.629875,307.081694,"ops/s",H2,1
+"org.simpleflatmapper.sql2o.Sql2OSfmBenchmark._16Fields","thrpt",1,200,122921.415736,231.167563,"ops/s",H2,10
+"org.simpleflatmapper.sql2o.Sql2OSfmBenchmark._16Fields","thrpt",1,200,30238.790058,461.043077,"ops/s",H2,100
+"org.simpleflatmapper.sql2o.Sql2OSfmBenchmark._16Fields","thrpt",1,200,3436.034368,63.781515,"ops/s",H2,1000

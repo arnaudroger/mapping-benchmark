@@ -1,0 +1,25 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._04Fields","thrpt",1,200,191788.568374,418.442518,"ops/s",H2,1
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._04Fields","thrpt",1,200,42705.322061,131.103435,"ops/s",H2,10
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._04Fields","thrpt",1,200,4871.207795,11.081373,"ops/s",H2,100
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._04Fields","thrpt",1,200,492.396021,1.665947,"ops/s",H2,1000
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._16Fields","thrpt",1,200,46611.740916,93.689287,"ops/s",H2,1
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._16Fields","thrpt",1,200,9389.966905,43.931758,"ops/s",H2,10
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._16Fields","thrpt",1,200,1059.100893,4.256511,"ops/s",H2,100
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._16Fields","thrpt",1,200,104.284695,0.615015,"ops/s",H2,1000
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._04Fields","thrpt",1,200,984262.815838,2052.977436,"ops/s",H2,1
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._04Fields","thrpt",1,200,493452.417714,1325.800296,"ops/s",H2,10
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._04Fields","thrpt",1,200,81365.627921,196.030285,"ops/s",H2,100
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._04Fields","thrpt",1,200,8397.521268,39.047671,"ops/s",H2,1000
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._16Fields","thrpt",1,200,324959.449596,658.763495,"ops/s",H2,1
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._16Fields","thrpt",1,200,134835.258524,191.710791,"ops/s",H2,10
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._16Fields","thrpt",1,200,20679.848018,92.488122,"ops/s",H2,100
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._16Fields","thrpt",1,200,2126.992972,4.708285,"ops/s",H2,1000
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._04Fields","thrpt",1,200,1985317.805665,5450.095622,"ops/s",H2,1
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._04Fields","thrpt",1,200,368738.213826,3290.489826,"ops/s",H2,10
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._04Fields","thrpt",1,200,43894.431193,71.936237,"ops/s",H2,100
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._04Fields","thrpt",1,200,4223.936249,14.666101,"ops/s",H2,1000
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._16Fields","thrpt",1,200,803312.680955,8632.337508,"ops/s",H2,1
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._16Fields","thrpt",1,200,130669.772643,1435.686674,"ops/s",H2,10
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._16Fields","thrpt",1,200,14034.279522,120.486725,"ops/s",H2,100
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._16Fields","thrpt",1,200,1346.490995,20.773374,"ops/s",H2,1000

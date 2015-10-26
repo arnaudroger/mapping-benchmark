@@ -1,0 +1,25 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: limit"
+"org.simpleflatmapper.datastax.DatastaxManualBenchmark._04Fields","thrpt",1,200,3875.621146,8.321964,"ops/s",1
+"org.simpleflatmapper.datastax.DatastaxManualBenchmark._04Fields","thrpt",1,200,3709.013852,6.803939,"ops/s",10
+"org.simpleflatmapper.datastax.DatastaxManualBenchmark._04Fields","thrpt",1,200,2382.583176,8.388155,"ops/s",100
+"org.simpleflatmapper.datastax.DatastaxManualBenchmark._04Fields","thrpt",1,200,498.637531,1.024081,"ops/s",1000
+"org.simpleflatmapper.datastax.DatastaxManualBenchmark._16Fields","thrpt",1,200,3829.330745,6.503734,"ops/s",1
+"org.simpleflatmapper.datastax.DatastaxManualBenchmark._16Fields","thrpt",1,200,3258.006733,13.122145,"ops/s",10
+"org.simpleflatmapper.datastax.DatastaxManualBenchmark._16Fields","thrpt",1,200,1254.966296,2.213818,"ops/s",100
+"org.simpleflatmapper.datastax.DatastaxManualBenchmark._16Fields","thrpt",1,200,178.746022,0.451698,"ops/s",1000
+"org.simpleflatmapper.datastax.DatastaxMapperBenchmark._04Fields","thrpt",1,200,3876.652805,7.253971,"ops/s",1
+"org.simpleflatmapper.datastax.DatastaxMapperBenchmark._04Fields","thrpt",1,200,3712.433732,6.871509,"ops/s",10
+"org.simpleflatmapper.datastax.DatastaxMapperBenchmark._04Fields","thrpt",1,200,2126.303768,3.976569,"ops/s",100
+"org.simpleflatmapper.datastax.DatastaxMapperBenchmark._04Fields","thrpt",1,200,394.015996,0.741659,"ops/s",1000
+"org.simpleflatmapper.datastax.DatastaxMapperBenchmark._16Fields","thrpt",1,200,3821.973141,6.333075,"ops/s",1
+"org.simpleflatmapper.datastax.DatastaxMapperBenchmark._16Fields","thrpt",1,200,3019.995247,6.693284,"ops/s",10
+"org.simpleflatmapper.datastax.DatastaxMapperBenchmark._16Fields","thrpt",1,200,953.721210,2.415404,"ops/s",100
+"org.simpleflatmapper.datastax.DatastaxMapperBenchmark._16Fields","thrpt",1,200,123.819695,0.389129,"ops/s",1000
+"org.simpleflatmapper.datastax.DatastaxSfmBenchmark._04Fields","thrpt",1,200,3875.372024,7.134485,"ops/s",1
+"org.simpleflatmapper.datastax.DatastaxSfmBenchmark._04Fields","thrpt",1,200,3713.929236,6.052348,"ops/s",10
+"org.simpleflatmapper.datastax.DatastaxSfmBenchmark._04Fields","thrpt",1,200,2349.331382,8.294899,"ops/s",100
+"org.simpleflatmapper.datastax.DatastaxSfmBenchmark._04Fields","thrpt",1,200,491.888422,0.911090,"ops/s",1000
+"org.simpleflatmapper.datastax.DatastaxSfmBenchmark._16Fields","thrpt",1,200,3824.235904,6.740656,"ops/s",1
+"org.simpleflatmapper.datastax.DatastaxSfmBenchmark._16Fields","thrpt",1,200,3236.501316,13.388275,"ops/s",10
+"org.simpleflatmapper.datastax.DatastaxSfmBenchmark._16Fields","thrpt",1,200,1229.644997,2.561353,"ops/s",100
+"org.simpleflatmapper.datastax.DatastaxSfmBenchmark._16Fields","thrpt",1,200,174.349251,0.457615,"ops/s",1000

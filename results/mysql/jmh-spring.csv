@@ -1,0 +1,25 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._04Fields","thrpt",1,200,17787.288485,103.688272,"ops/s",MYSQL,1
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._04Fields","thrpt",1,200,11501.016480,61.345508,"ops/s",MYSQL,10
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._04Fields","thrpt",1,200,2601.773714,5.634469,"ops/s",MYSQL,100
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._04Fields","thrpt",1,200,340.758764,0.863093,"ops/s",MYSQL,1000
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._16Fields","thrpt",1,200,11187.863944,50.895585,"ops/s",MYSQL,1
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._16Fields","thrpt",1,200,5213.251518,17.283282,"ops/s",MYSQL,10
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._16Fields","thrpt",1,200,859.817432,3.817597,"ops/s",MYSQL,100
+"org.simpleflatmapper.spring.RowMapperBeanPropertyBenchmark._16Fields","thrpt",1,200,98.975236,0.504972,"ops/s",MYSQL,1000
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._04Fields","thrpt",1,200,19245.449021,138.495606,"ops/s",MYSQL,1
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._04Fields","thrpt",1,200,15294.215213,77.601496,"ops/s",MYSQL,10
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._04Fields","thrpt",1,200,5346.411635,7.736744,"ops/s",MYSQL,100
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._04Fields","thrpt",1,200,810.627765,1.127947,"ops/s",MYSQL,1000
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._16Fields","thrpt",1,200,13454.761633,67.603055,"ops/s",MYSQL,1
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._16Fields","thrpt",1,200,10210.741983,40.682388,"ops/s",MYSQL,10
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._16Fields","thrpt",1,200,3200.605239,5.997296,"ops/s",MYSQL,100
+"org.simpleflatmapper.spring.RowMapperRomaBenchmark._16Fields","thrpt",1,200,523.710125,2.940608,"ops/s",MYSQL,1000
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._04Fields","thrpt",1,200,20199.658513,136.245084,"ops/s",MYSQL,1
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._04Fields","thrpt",1,200,15708.497454,67.056603,"ops/s",MYSQL,10
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._04Fields","thrpt",1,200,5376.351210,13.847262,"ops/s",MYSQL,100
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._04Fields","thrpt",1,200,804.692784,1.315496,"ops/s",MYSQL,1000
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._16Fields","thrpt",1,200,15343.582592,113.893525,"ops/s",MYSQL,1
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._16Fields","thrpt",1,200,11247.919507,39.006948,"ops/s",MYSQL,10
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._16Fields","thrpt",1,200,3285.422650,7.261516,"ops/s",MYSQL,100
+"org.simpleflatmapper.spring.RowMapperSfmBenchmark._16Fields","thrpt",1,200,523.094314,2.593541,"ops/s",MYSQL,1000

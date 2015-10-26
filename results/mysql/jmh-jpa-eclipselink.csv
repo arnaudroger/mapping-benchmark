@@ -1,0 +1,9 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._04Fields","thrpt",1,200,15994.970995,173.885245,"ops/s",MYSQL,1
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._04Fields","thrpt",1,200,12381.028478,94.041601,"ops/s",MYSQL,10
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._04Fields","thrpt",1,200,3923.482846,13.987750,"ops/s",MYSQL,100
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._04Fields","thrpt",1,200,565.418398,0.807574,"ops/s",MYSQL,1000
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._16Fields","thrpt",1,200,12606.101315,93.621983,"ops/s",MYSQL,1
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._16Fields","thrpt",1,200,8895.492719,66.114522,"ops/s",MYSQL,10
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._16Fields","thrpt",1,200,2255.598931,4.785508,"ops/s",MYSQL,100
+"org.simpleflatmapper.eclipselink.EclipseLinkBenchmark._16Fields","thrpt",1,200,339.113564,1.429976,"ops/s",MYSQL,1000

@@ -1,0 +1,9 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._04Fields","thrpt",1,200,14144.465559,742.409028,"ops/s",MYSQL,1
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._04Fields","thrpt",1,200,11803.327236,692.703941,"ops/s",MYSQL,10
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._04Fields","thrpt",1,200,3502.643598,509.253409,"ops/s",MYSQL,100
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._04Fields","thrpt",1,200,347.805360,57.835065,"ops/s",MYSQL,1000
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._04Fields","thrpt",1,200,14430.566349,691.458818,"ops/s",MYSQL,1
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._04Fields","thrpt",1,200,11939.401647,671.692914,"ops/s",MYSQL,10
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._04Fields","thrpt",1,200,3469.713699,534.787344,"ops/s",MYSQL,100
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._04Fields","thrpt",1,200,302.729992,59.773494,"ops/s",MYSQL,1000

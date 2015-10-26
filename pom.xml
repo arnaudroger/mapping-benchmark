@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.simpleflatmapper.benchmark</groupId>
+    <artifactId>mapping-benchmark</artifactId>
+    <packaging>pom</packaging>
+		<version>2.3-SNAPSHOT</version>
+
+    <name>mapping-benchmark</name>
+    <url>http://github.com/arnaudroger/SimpleFlatMapper</url>
+
+    <description>SFM Benchmarks.
+    </description>
+
+    <developers>
+        <developer>
+            <id>arnaudroger</id>
+            <name>Arnaud Roger</name>
+            <email>arnaud.roger@gmail.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The MIT License (MIT)</name>
+            <url>http://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>scm:git:git://github.com/arnaudroger/SimpleFlatMapper.git</url>
+        <connection>scm:git:git://github.com/arnaudroger/SimpleFlatMapper.git</connection>
+        <developerConnection>scm:git:git@github.com:arnaudroger/SimpleFlatMapper.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jmh.version>1.11.1</jmh.version>
+        <javac.target>1.8</javac.target>
+        <uberjar.name>benchmarks</uberjar.name>
+        <sfm.version>2.4.1</sfm.version>
+    </properties>
+
+    <modules>
+        <module>common</module>
+        <module>common-db</module>
+        <module>common-jpa</module>
+        <module>jpa-batoo</module>
+        <module>jpa-eclipselink</module>
+        <module>jpa-hibernate</module>
+        <module>jooq</module>
+        <module>mybatis</module>
+        <module>querydsl</module>
+        <module>sfm-csv</module>
+        <module>sfm-jdbc</module>
+        <module>sfm-datastax</module>
+        <module>sfm-poi</module>
+        <module>sql2o</module>
+        <module>spring</module>
+        <module>results</module>
+  </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <compilerVersion>${javac.target}</compilerVersion>
+                        <source>${javac.target}</source>
+                        <target>${javac.target}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>2.2</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <finalName>${uberjar.name}</finalName>
+                                <transformers>
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <mainClass>org.openjdk.jmh.Main</mainClass>
+                                    </transformer>
+                                </transformers>
+                                <filters>
+                                    <filter>
+                                        <!--
+                                            Shading signed JARs will fail without this.
+                                            http://stackoverflow.com/questions/999489/invalid-signature-file-when-attempting-to-run-a-jar
+                                        -->
+                                        <artifact>*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/*.SF</exclude>
+                                            <exclude>META-INF/*.DSA</exclude>
+                                            <exclude>META-INF/*.RSA</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

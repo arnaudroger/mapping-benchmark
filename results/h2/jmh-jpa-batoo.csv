@@ -1,0 +1,9 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.batoo.BatooBenchmark._04Fields","thrpt",1,200,245405.364900,898.787007,"ops/s",H2,1
+"org.simpleflatmapper.batoo.BatooBenchmark._04Fields","thrpt",1,200,151064.129033,677.636415,"ops/s",H2,10
+"org.simpleflatmapper.batoo.BatooBenchmark._04Fields","thrpt",1,200,30250.208067,174.137382,"ops/s",H2,100
+"org.simpleflatmapper.batoo.BatooBenchmark._04Fields","thrpt",1,200,3289.828699,17.963514,"ops/s",H2,1000
+"org.simpleflatmapper.batoo.BatooBenchmark._16Fields","thrpt",1,200,144895.039155,698.397946,"ops/s",H2,1
+"org.simpleflatmapper.batoo.BatooBenchmark._16Fields","thrpt",1,200,71603.250129,357.900183,"ops/s",H2,10
+"org.simpleflatmapper.batoo.BatooBenchmark._16Fields","thrpt",1,200,11621.146892,35.698756,"ops/s",H2,100
+"org.simpleflatmapper.batoo.BatooBenchmark._16Fields","thrpt",1,200,1207.726088,4.071372,"ops/s",H2,1000

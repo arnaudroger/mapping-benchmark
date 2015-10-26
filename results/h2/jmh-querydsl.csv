@@ -1,0 +1,17 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._04Fields","thrpt",1,200,1485.581065,463.870789,"ops/s",H2,1
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._04Fields","thrpt",1,200,6985.470764,3784.573374,"ops/s",H2,10
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._04Fields","thrpt",1,200,10027.206621,1452.911746,"ops/s",H2,100
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._04Fields","thrpt",1,200,1553.673115,106.275537,"ops/s",H2,1000
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._16Fields","thrpt",1,200,7286.989891,3047.626539,"ops/s",H2,1
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._16Fields","thrpt",1,200,12597.097298,2299.408925,"ops/s",H2,10
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._16Fields","thrpt",1,200,3914.816439,245.054016,"ops/s",H2,100
+"org.simpleflatmapper.querydsl.QueryDslBenchmark._16Fields","thrpt",1,200,442.548245,24.720795,"ops/s",H2,1000
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._04Fields","thrpt",1,200,1562.232935,1191.568360,"ops/s",H2,1
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._04Fields","thrpt",1,200,7668.584847,4143.562018,"ops/s",H2,10
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._04Fields","thrpt",1,200,9470.268985,1640.835592,"ops/s",H2,100
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._04Fields","thrpt",1,200,1659.848474,112.402410,"ops/s",H2,1000
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._16Fields","thrpt",1,200,5294.282292,2541.383272,"ops/s",H2,1
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._16Fields","thrpt",1,200,10658.977213,2483.814278,"ops/s",H2,10
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._16Fields","thrpt",1,200,4462.041949,292.990027,"ops/s",H2,100
+"org.simpleflatmapper.querydsl.QueryDslSfmBenchmark._16Fields","thrpt",1,200,514.806204,22.629920,"ops/s",H2,1000

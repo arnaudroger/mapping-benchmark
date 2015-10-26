@@ -1,0 +1,25 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.jdbc.JdbcManualBenchmark._04Fields","thrpt",1,200,3324427.266606,15670.106229,"ops/s",H2,1
+"org.simpleflatmapper.jdbc.JdbcManualBenchmark._04Fields","thrpt",1,200,1276988.235502,6612.155533,"ops/s",H2,10
+"org.simpleflatmapper.jdbc.JdbcManualBenchmark._04Fields","thrpt",1,200,178840.203573,925.080768,"ops/s",H2,100
+"org.simpleflatmapper.jdbc.JdbcManualBenchmark._04Fields","thrpt",1,200,18556.775582,96.556677,"ops/s",H2,1000
+"org.simpleflatmapper.jdbc.JdbcManualBenchmark._16Fields","thrpt",1,200,1668595.664502,12035.772234,"ops/s",H2,1
+"org.simpleflatmapper.jdbc.JdbcManualBenchmark._16Fields","thrpt",1,200,394475.279316,894.166562,"ops/s",H2,10
+"org.simpleflatmapper.jdbc.JdbcManualBenchmark._16Fields","thrpt",1,200,46877.675981,143.570933,"ops/s",H2,100
+"org.simpleflatmapper.jdbc.JdbcManualBenchmark._16Fields","thrpt",1,200,4633.350781,5.668819,"ops/s",H2,1000
+"org.simpleflatmapper.sfm.JdbcSfmDynamicBenchmark._04Fields","thrpt",1,200,1987574.630485,5503.826630,"ops/s",H2,1
+"org.simpleflatmapper.sfm.JdbcSfmDynamicBenchmark._04Fields","thrpt",1,200,872914.783954,5275.307904,"ops/s",H2,10
+"org.simpleflatmapper.sfm.JdbcSfmDynamicBenchmark._04Fields","thrpt",1,200,142355.210249,581.057188,"ops/s",H2,100
+"org.simpleflatmapper.sfm.JdbcSfmDynamicBenchmark._04Fields","thrpt",1,200,14399.484560,80.444594,"ops/s",H2,1000
+"org.simpleflatmapper.sfm.JdbcSfmDynamicBenchmark._16Fields","thrpt",1,200,839549.936203,5007.916581,"ops/s",H2,1
+"org.simpleflatmapper.sfm.JdbcSfmDynamicBenchmark._16Fields","thrpt",1,200,257995.182366,1841.427921,"ops/s",H2,10
+"org.simpleflatmapper.sfm.JdbcSfmDynamicBenchmark._16Fields","thrpt",1,200,37484.097588,63.093865,"ops/s",H2,100
+"org.simpleflatmapper.sfm.JdbcSfmDynamicBenchmark._16Fields","thrpt",1,200,3661.797093,37.992224,"ops/s",H2,1000
+"org.simpleflatmapper.sfm.JdbcSfmStaticBenchmark._04Fields","thrpt",1,200,3048631.447699,10016.689463,"ops/s",H2,1
+"org.simpleflatmapper.sfm.JdbcSfmStaticBenchmark._04Fields","thrpt",1,200,1046215.920199,3355.138842,"ops/s",H2,10
+"org.simpleflatmapper.sfm.JdbcSfmStaticBenchmark._04Fields","thrpt",1,200,145470.240795,682.857816,"ops/s",H2,100
+"org.simpleflatmapper.sfm.JdbcSfmStaticBenchmark._04Fields","thrpt",1,200,14490.854191,83.019906,"ops/s",H2,1000
+"org.simpleflatmapper.sfm.JdbcSfmStaticBenchmark._16Fields","thrpt",1,200,1545465.983902,10514.585683,"ops/s",H2,1
+"org.simpleflatmapper.sfm.JdbcSfmStaticBenchmark._16Fields","thrpt",1,200,324707.532941,1002.953479,"ops/s",H2,10
+"org.simpleflatmapper.sfm.JdbcSfmStaticBenchmark._16Fields","thrpt",1,200,38598.027833,53.902030,"ops/s",H2,100
+"org.simpleflatmapper.sfm.JdbcSfmStaticBenchmark._16Fields","thrpt",1,200,3675.733327,42.515396,"ops/s",H2,1000

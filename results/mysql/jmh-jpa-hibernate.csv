@@ -1,0 +1,9 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.HibernateBenchmark._04Fields","thrpt",1,200,9814.746908,65.879498,"ops/s",MYSQL,1
+"org.simpleflatmapper.HibernateBenchmark._04Fields","thrpt",1,200,8228.969213,53.451228,"ops/s",MYSQL,10
+"org.simpleflatmapper.HibernateBenchmark._04Fields","thrpt",1,200,3196.809969,16.416506,"ops/s",MYSQL,100
+"org.simpleflatmapper.HibernateBenchmark._04Fields","thrpt",1,200,501.034219,1.112756,"ops/s",MYSQL,1000
+"org.simpleflatmapper.HibernateBenchmark._16Fields","thrpt",1,200,7920.180024,69.704085,"ops/s",MYSQL,1
+"org.simpleflatmapper.HibernateBenchmark._16Fields","thrpt",1,200,6034.735782,37.211352,"ops/s",MYSQL,10
+"org.simpleflatmapper.HibernateBenchmark._16Fields","thrpt",1,200,1805.267734,4.710334,"ops/s",MYSQL,100
+"org.simpleflatmapper.HibernateBenchmark._16Fields","thrpt",1,200,272.673504,4.194563,"ops/s",MYSQL,1000

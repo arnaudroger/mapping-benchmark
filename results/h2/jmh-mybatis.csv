@@ -1,0 +1,9 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: db","Param: limit"
+"org.simpleflatmapper.mybatis.MyBatisBenchmark._04Fields","thrpt",1,200,165113.961757,578.523633,"ops/s",H2,1
+"org.simpleflatmapper.mybatis.MyBatisBenchmark._04Fields","thrpt",1,200,71162.620821,179.397952,"ops/s",H2,10
+"org.simpleflatmapper.mybatis.MyBatisBenchmark._04Fields","thrpt",1,200,10992.588785,55.176286,"ops/s",H2,100
+"org.simpleflatmapper.mybatis.MyBatisBenchmark._04Fields","thrpt",1,200,1169.167314,3.151634,"ops/s",H2,1000
+"org.simpleflatmapper.mybatis.MyBatisBenchmark._16Fields","thrpt",1,200,77500.577193,253.667190,"ops/s",H2,1
+"org.simpleflatmapper.mybatis.MyBatisBenchmark._16Fields","thrpt",1,200,21599.651647,50.026303,"ops/s",H2,10
+"org.simpleflatmapper.mybatis.MyBatisBenchmark._16Fields","thrpt",1,200,2701.672348,21.192246,"ops/s",H2,100
+"org.simpleflatmapper.mybatis.MyBatisBenchmark._16Fields","thrpt",1,200,276.483008,1.024761,"ops/s",H2,1000
