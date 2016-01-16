@@ -62,7 +62,6 @@ public class DatastaxSfmCrudReadBenchmark {
     @Setup
     public void setUp() throws InterruptedException, TTransportException, ConfigurationException, IOException {
         datastaxHelper = new DatastaxHelper();
-        DatastaxMapperFactory.newInstance().crud(Object4Fields.class, Long.class).to(datastaxHelper.session, "test_table");
         mapper4 = DatastaxMapperFactory.newInstance().crud(Object4Fields.class, Long.class).to(datastaxHelper.session, "test_table");
         mapper16 = DatastaxMapperFactory.newInstance().crud(Object16Fields.class, Long.class).to(datastaxHelper.session, "test_table_16");
     }
@@ -89,5 +88,7 @@ public class DatastaxSfmCrudReadBenchmark {
 
         System.out.println("4 " + b._read04Fields());
         System.out.println("16 " + b._read16Fields());
+
+        b.tearDown();
     }
 }

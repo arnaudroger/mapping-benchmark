@@ -89,5 +89,7 @@ public class DatastaxMapperReadBenchmark {
 
         System.out.println("4 " + b._read04Fields());
         System.out.println("16 " + b._read16Fields());
+
+        b.tearDown();
     }
 }
