@@ -1,6 +1,8 @@
 package results;
 
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -30,7 +32,7 @@ public class ChartFactory {
                     && (!r.getLib().toLowerCase().contains("sfm") || r.getLib().contains("Jdbc") || r.getLib().contains("Datastax")); };
 
     private Function<BenchmarkResult, ? extends Comparable> rowKey = (r) -> r.getLib();
-    private Function<BenchmarkResult, ? extends Comparable> columnKey = (r) -> r.getLimit();
+    private Function<BenchmarkResult, ? extends Comparable> columnKey = (r) -> r.getLimit() +  "/" + r.getNbFields();
 
     private Comparator<BenchmarkResult> resultComparator =
             Comparator.comparing(BenchmarkResult::getNbFields)
@@ -39,68 +41,30 @@ public class ChartFactory {
 
     private String title = "title";
     private String xAxisLabel = "x";
-    private String yAxisLabel = "y";
 
-    private Unit targetUnit;
 
-    public JFreeChart createChart(Iterable<BenchmarkResult> results) {
-        List<BenchmarkResult> resultList =  new ArrayList<>();
+    public JFreeChart createChart(BenchmarkData results) {
 
-        results.forEach((b) -> resultList.add(convert(b)));
-
-        Unit unit = targetUnit;
-        if (targetUnit == null) {
-            unit = resultList.get(0).getUnit();
-        }
-
-        Collections.sort(resultList, resultComparator);
+        results = results.sort(resultComparator);
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        Stream<BenchmarkResult> filteredStream = resultList
-                .stream()
-                .filter(filter);
+        results.forEach( (b) -> dataset.addValue(b.getScore(), rowKey.apply(b), columnKey.apply(b)));
 
-        Consumer<BenchmarkResult> consumer;
+        JFreeChart barChart = org.jfree.chart.ChartFactory.createBarChart(title, xAxisLabel, results.getUnit().toString(), dataset);
 
-        if (targetUnit.isPercent()) {
+        CategoryPlot categoryPlot = barChart.getCategoryPlot();
 
-            Comparator<BenchmarkResult> scoring;
-            if (unit.isLatency())  {
-                scoring = Comparator.comparing(BenchmarkResult::getScore).reversed();
-            } else {
-                scoring = Comparator.comparing(BenchmarkResult::getScore);
-            }
-            consumer =
-                    (b) -> {
-                        BenchmarkResult br = resultList.stream().filter(filter).filter((bb) -> bb.getLimit() == b.getLimit()).max(scoring).get();
-                        dataset.addValue(((b.getScore() * 100)/br.getScore()), rowKey.apply(b), columnKey.apply(b));
-                    };
-        } else {
-            consumer =
-                    (b) -> dataset.addValue(b.getScore(), rowKey.apply(b), columnKey.apply(b));
-        }
-        filteredStream
-                .forEach(consumer);
+        ValueAxis rangeAxis = categoryPlot.getRangeAxis();
+        rangeAxis.setUpperBound(3);
+        rangeAxis.setLowerBound(1);
+        BarRenderer r = (BarRenderer) categoryPlot.getRenderer();
 
-        JFreeChart barChart = org.jfree.chart.ChartFactory.createBarChart(title, xAxisLabel, unit.toString(), dataset);
 
-        BarRenderer r = (BarRenderer)barChart.getCategoryPlot().getRenderer();
-
-        //r.setSeriesPaint();
         r.setBarPainter(new StandardBarPainter());
         return barChart;
     }
 
-    private BenchmarkResult convert(BenchmarkResult b) {
-        if (targetUnit != null && b.getMode() != targetUnit.getMode()) {
-            b = b.invert();
-        }
-        if (targetUnit != null && b.getUnit() != targetUnit && targetUnit.getTimeUnit() != null) {
-            b = b.scaleTo(targetUnit.getTimeUnit());
-        }
-        return b;
-    }
 
     public static void main(String[] args) throws IOException {
 
@@ -108,15 +72,24 @@ public class ChartFactory {
         List<BenchmarkResult> list = new ArrayList<>();
 
         Files
-                .find(FileSystems.getDefault().getPath("./results/mysql"), 3, (path, att) -> att.isRegularFile())
+                .find(FileSystems.getDefault().getPath("./results/h2"), 3, (path, att) -> att.isRegularFile())
                 .forEach(
                         (p) ->  BenchmarkResult.readFile(p, list::add)
                 );
 
-        results.ChartFactory cf = new results.ChartFactory();
-        cf.targetUnit = Unit.percent_from_ref_avgt;
 
-        JFreeChart chart = cf.createChart(list);
+        BenchmarkData bd  = new BenchmarkData(list);
+
+        bd = bd.filter(
+                (r) -> { return r.getNbFields() == 16
+                && (!r.getLib().toLowerCase().contains("sfm") || r.getLib().contains("Jdbc") || r.getLib().contains("Datastax")); })
+        .toUnit(Unit.percent_from_ref_avgt);
+
+
+
+        results.ChartFactory cf = new results.ChartFactory();
+
+        JFreeChart chart = cf.createChart(bd);
 
         JFrame jFrame = new JFrame();
 
@@ -134,5 +107,9 @@ public class ChartFactory {
         jFrame.setVisible(true);
 
 
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

@@ -4,7 +4,7 @@ import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.PartitionKey;
 import com.datastax.driver.mapping.annotations.Table;
 
-@Table(keyspace = "test", name = "test_table")
+@Table(keyspace = "testsfm", name = "test_table")
 public class Object4Fields {
         @PartitionKey
         private long id;

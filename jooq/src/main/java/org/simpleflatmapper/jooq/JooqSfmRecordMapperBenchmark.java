@@ -21,7 +21,9 @@ import org.simpleflatmapper.db.ConnectionParam;
 import org.simpleflatmapper.db.DbTarget;
 import org.simpleflatmapper.param.LimitParam;
 
+import javax.naming.NamingException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @State(Scope.Benchmark)
@@ -61,6 +63,22 @@ public class JooqSfmRecordMapperBenchmark {
 		List<MappedObject16> result = select16.limit(limit.limit).fetchInto(MappedObject16.class);
 		for(MappedObject16 o : result) {
 			blackhole.consume(o);
+		}
+	}
+
+	public static void main(String[] args) throws SQLException, NamingException {
+		ConnectionParam cp = new ConnectionParam();
+		cp.db = DbTarget.H2;
+		cp.init();
+		DSLContext dsl = DSL.using(new DefaultConfiguration().set(cp.dataSource).set(JooqMapperBenchmark.getSqlDialect(cp.db)).set(new SfmRecordMapperProvider()));
+
+		SelectOffsetStep<TestSmallBenchmarkObjectRecord> query = dsl.selectFrom(TestSmallBenchmarkObject.TEST_SMALL_BENCHMARK_OBJECT).limit(1);
+
+		for(MappedObject4 o : query.fetchInto(MappedObject4.class)) {
+			System.out.println("o = " + o);
+		}
+		for(MappedObject4 o : query.fetchInto(MappedObject4.class)) {
+			System.out.println("o = " + o);
 		}
 	}
 }

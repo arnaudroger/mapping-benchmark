@@ -20,7 +20,9 @@ import org.simpleflatmapper.db.ConnectionParam;
 import org.simpleflatmapper.db.DbTarget;
 import org.simpleflatmapper.param.LimitParam;
 
+import javax.naming.NamingException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @State(Scope.Benchmark)
@@ -63,4 +65,5 @@ public class JooqSfmBenchmark {
 			mapper16.forEach(result, blackhole::consume);
 		}
 	}
+
 }

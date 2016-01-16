@@ -152,6 +152,10 @@ public class BenchmarkResult {
         return new BenchmarkResult(lib, nbFields, mode, threads, samples, (score * m) / d, (scoreError * m) / d, unit.toTimeUnit(tu), dbTarget, limit);
     }
 
+    public BenchmarkResult asPercentOf(BenchmarkResult ref) {
+        return new BenchmarkResult(lib, nbFields, mode, threads, samples, score/ref.getScore(), scoreError, unit, dbTarget, limit);
+    }
+
     public static class BenchmarkKey {
         private final String lib;
         private final int nbFields;

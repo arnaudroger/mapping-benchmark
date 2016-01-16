@@ -4,7 +4,7 @@ import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.PartitionKey;
 import com.datastax.driver.mapping.annotations.Table;
 
-@Table(keyspace = "test", name = "test_table_16")
+@Table(keyspace = "testsfm", name = "test_table_16")
  public class Object16Fields {
 	@PartitionKey
 	private long id;
@@ -151,5 +151,27 @@ import com.datastax.driver.mapping.annotations.Table;
 
 	public void setField16(int field16) {
 		this.field16 = field16;
+	}
+
+	@Override
+	public String toString() {
+		return "Object16Fields{" +
+				"id=" + id +
+				", yearStarted=" + yearStarted +
+				", name='" + name + '\'' +
+				", email='" + email + '\'' +
+				", field5=" + field5 +
+				", field6=" + field6 +
+				", field7=" + field7 +
+				", field8=" + field8 +
+				", field9=" + field9 +
+				", field10=" + field10 +
+				", field11=" + field11 +
+				", field12=" + field12 +
+				", field13=" + field13 +
+				", field14=" + field14 +
+				", field15=" + field15 +
+				", field16=" + field16 +
+				'}';
 	}
 }
