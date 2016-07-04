@@ -74,12 +74,12 @@ public class DatastaxSfmCrudReadBenchmark {
 
     @Benchmark
     public Object4Fields _read04Fields() {
-        return mapper4.read(datastaxHelper.session, 0l);
+        return mapper4.read(0l);
     }
 
     @Benchmark
     public Object16Fields _read16Fields() {
-        return mapper16.read(datastaxHelper.session, 0l);
+        return mapper16.read(0l);
     }
 
     public static void main(String[] args) throws InterruptedException, IOException, TTransportException {
