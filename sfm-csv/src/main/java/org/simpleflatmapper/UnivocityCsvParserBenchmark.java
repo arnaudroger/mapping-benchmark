@@ -35,4 +35,27 @@ public class UnivocityCsvParserBenchmark {
             parser.parse(reader);
         }
     }
+
+    @Benchmark
+    public void parseCsvQuotes(Blackhole blackhole) throws IOException {
+        CsvParserSettings settings = new CsvParserSettings();
+
+        //turning off features enabled by default
+        settings.setIgnoreLeadingWhitespaces(false);
+        settings.setIgnoreTrailingWhitespaces(false);
+        settings.setSkipEmptyLines(false);
+        settings.setColumnReorderingEnabled(false);
+
+        settings.setRowProcessor(new AbstractRowProcessor() {
+            @Override
+            public void rowProcessed(String[] row, ParsingContext context) {
+                blackhole.consume(row);
+            }
+        });
+
+        com.univocity.parsers.csv.CsvParser parser = new com.univocity.parsers.csv.CsvParser(settings);
+        try(Reader reader = Csv.getReaderQuotes()) {
+            parser.parse(reader);
+        }
+    }
 }

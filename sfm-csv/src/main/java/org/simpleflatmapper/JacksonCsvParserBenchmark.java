@@ -26,4 +26,18 @@ public class JacksonCsvParserBenchmark {
             }
         }
     }
+
+    @Benchmark
+    public void parseCsvQuotes(Blackhole blackhole) throws IOException {
+        CsvMapper csvMapper = new CsvMapper();
+        csvMapper.enable(com.fasterxml.jackson.dataformat.csv.CsvParser.Feature.WRAP_AS_ARRAY);
+
+        try(Reader reader = Csv.getReaderQuotes()) {
+            MappingIterator<String[]> iterator = csvMapper.readerFor(String[].class).readValues(reader);
+
+            while (iterator.hasNext()) {
+                blackhole.consume(iterator.next());
+            }
+        }
+    }
 }
