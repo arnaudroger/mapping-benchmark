@@ -1,12 +1,13 @@
 package org.simpleflatmapper.param;
 
 import org.sfm.csv.CsvParser;
-import org.sfm.csv.CsvReader;
-import org.sfm.csv.CsvWriter;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -38,26 +39,33 @@ public class Csv {
                 }
             }
         }
-        return new FileReader(file);
+        return newReader(file);
     }
 
     public static Reader getReaderQuotes() throws IOException {
         File file = new File(fileNameQuotes);
         if (!file.exists()) {
-            byte[] buffer = new byte[4096];
             try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
                  BufferedInputStream bis = new BufferedInputStream(new GZIPInputStream(new URL(url).openStream()));
                  Writer writer = new OutputStreamWriter(bos)
             ) {
-
-
-
                 CsvParser.reader(new InputStreamReader(bis)).read(
                         (row) -> {
-                            for(String cell : row) {
+                            for(int i = 0; i < row.length; i++) {
+                                String cell = row[i];
+                                if (i>0) {
+                                    writer.write(",");
+                                }
                                 writer.write("\"");
-                                writer.write(cell);
-                                writer.write("\",");
+
+                                for(int j = 0; j < cell.length(); j++) {
+                                    char c = cell.charAt(j);
+                                    if (c == '"') {
+                                        writer.append('"');
+                                    }
+                                    writer.append(c);
+                                }
+                                writer.write("\"");
                             }
                             writer.write("\n");
                         }
@@ -65,6 +73,10 @@ public class Csv {
                 );
             }
         }
-        return new FileReader(file);
+        return newReader(file);
+    }
+
+    private static Reader newReader(File file) throws FileNotFoundException {
+        return new InputStreamReader(new FileInputStream(file));
     }
 }

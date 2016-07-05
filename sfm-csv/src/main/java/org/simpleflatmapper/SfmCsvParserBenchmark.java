@@ -13,14 +13,14 @@ public class SfmCsvParserBenchmark {
     @Benchmark
     public void parseCsv(Blackhole blackhole) throws IOException {
         try(Reader reader = Csv.getReader()) {
-            CsvParser.reader(reader).read(blackhole::consume);
+            CsvParser.bufferSize(1024 * 1024).reader(reader).read(blackhole::consume);
         }
     }
 
     @Benchmark
     public void parseCsvQuotes(Blackhole blackhole) throws IOException {
         try(Reader reader = Csv.getReaderQuotes()) {
-            CsvParser.reader(reader).read(blackhole::consume);
+            CsvParser.bufferSize(1024 * 1024).reader(reader).read(blackhole::consume);
         }
     }
 

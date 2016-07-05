@@ -5,13 +5,12 @@ import com.univocity.parsers.common.processor.AbstractRowProcessor;
 import com.univocity.parsers.csv.CsvParserSettings;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.infra.Blackhole;
-import org.sfm.csv.CsvParser;
 import org.simpleflatmapper.param.Csv;
 
 import java.io.IOException;
 import java.io.Reader;
 
-public class UnivocityCsvParserBenchmark {
+public class UnivocityConcurrentCsvParserBenchmark {
 
     @Benchmark
     public void parseCsv(Blackhole blackhole) throws IOException {
@@ -22,7 +21,7 @@ public class UnivocityCsvParserBenchmark {
         settings.setIgnoreTrailingWhitespaces(false);
         settings.setSkipEmptyLines(false);
         settings.setColumnReorderingEnabled(false);
-        settings.setReadInputOnSeparateThread(false);
+        settings.setReadInputOnSeparateThread(true);
 
         settings.setRowProcessor(new AbstractRowProcessor() {
             @Override
@@ -46,7 +45,7 @@ public class UnivocityCsvParserBenchmark {
         settings.setIgnoreTrailingWhitespaces(false);
         settings.setSkipEmptyLines(false);
         settings.setColumnReorderingEnabled(false);
-        settings.setReadInputOnSeparateThread(false);
+        settings.setReadInputOnSeparateThread(true);
 
         settings.setRowProcessor(new AbstractRowProcessor() {
             @Override
