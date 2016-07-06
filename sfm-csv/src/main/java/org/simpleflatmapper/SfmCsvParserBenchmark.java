@@ -9,18 +9,18 @@ import java.io.IOException;
 import java.io.Reader;
 
 public class SfmCsvParserBenchmark {
-
+    public static final int BUFFER_SIZE = 1024 * 32;
     @Benchmark
     public void parseCsv(Blackhole blackhole) throws IOException {
         try(Reader reader = Csv.getReader()) {
-            CsvParser.bufferSize(1024 * 1024).reader(reader).read(blackhole::consume);
+            CsvParser.bufferSize(BUFFER_SIZE).reader(reader).read(blackhole::consume);
         }
     }
 
     @Benchmark
     public void parseCsvQuotes(Blackhole blackhole) throws IOException {
         try(Reader reader = Csv.getReaderQuotes()) {
-            CsvParser.bufferSize(1024 * 1024).reader(reader).read(blackhole::consume);
+            CsvParser.bufferSize(BUFFER_SIZE).reader(reader).read(blackhole::consume);
         }
     }
 

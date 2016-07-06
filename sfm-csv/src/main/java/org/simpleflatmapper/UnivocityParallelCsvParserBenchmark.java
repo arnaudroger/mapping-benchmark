@@ -51,7 +51,7 @@ public class UnivocityParallelCsvParserBenchmark {
         });
 
         com.univocity.parsers.csv.CsvParser parser = new com.univocity.parsers.csv.CsvParser(settings);
-        try(Reader reader = new ParallelReader(Csv.getReader(), executorService, 1024 * 1024 * 10)) {
+        try(Reader reader = Csv.getParallelReader(executorService)) {
             parser.parse(reader);
         }
     }
@@ -75,7 +75,7 @@ public class UnivocityParallelCsvParserBenchmark {
         });
 
         com.univocity.parsers.csv.CsvParser parser = new com.univocity.parsers.csv.CsvParser(settings);
-        try(Reader reader = new ParallelReader(Csv.getReaderQuotes(), executorService, 1024 * 1024* 10)) {
+        try(Reader reader = Csv.getParallelReaderQuotes(executorService)) {
             parser.parse(reader);
         }
     }

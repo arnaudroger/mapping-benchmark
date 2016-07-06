@@ -10,13 +10,17 @@ import org.sfm.csv.CsvParser;
 import org.sfm.utils.ParallelReader;
 import org.simpleflatmapper.param.Csv;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @State(Scope.Benchmark)
 public class SfmParallelCsvParserBenchmark {
+
 
 
     private ExecutorService executorService;
@@ -32,16 +36,15 @@ public class SfmParallelCsvParserBenchmark {
     }
     @Benchmark
     public void parseCsv(Blackhole blackhole) throws IOException {
-        try(Reader reader = new ParallelReader(Csv.getReader(), executorService, 1024 * 1024)) {
-            CsvParser.bufferSize(1024 * 1024).reader(reader).read(blackhole::consume);
+        try(Reader reader = Csv.getParallelReader(executorService)) {
+            CsvParser.bufferSize(SfmCsvParserBenchmark.BUFFER_SIZE).reader(reader).read(blackhole::consume);
         }
     }
 
     @Benchmark
     public void parseCsvQuotes(Blackhole blackhole) throws IOException {
-        try(Reader reader = new ParallelReader(Csv.getReaderQuotes(), executorService, 1024 * 1024)) {
-            CsvParser.bufferSize(1024 * 1024).reader(reader).read(blackhole::consume);
+        try(Reader reader = Csv.getParallelReaderQuotes(executorService)) {
+            CsvParser.bufferSize(32768).reader(reader).read(blackhole::consume);
         }
     }
-
 }

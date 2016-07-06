@@ -34,7 +34,7 @@ public class JacksonParallelCsvParserBenchmark {
         CsvMapper csvMapper = new CsvMapper();
         csvMapper.enable(com.fasterxml.jackson.dataformat.csv.CsvParser.Feature.WRAP_AS_ARRAY);
 
-        try(Reader reader = new ParallelReader(Csv.getReader(), executorService, 1024 * 1024)) {
+        try(Reader reader = Csv.getParallelReader(executorService)) {
             MappingIterator<String[]> iterator = csvMapper.readerFor(String[].class).readValues(reader);
 
             while (iterator.hasNext()) {
@@ -48,7 +48,7 @@ public class JacksonParallelCsvParserBenchmark {
         CsvMapper csvMapper = new CsvMapper();
         csvMapper.enable(com.fasterxml.jackson.dataformat.csv.CsvParser.Feature.WRAP_AS_ARRAY);
 
-        try(Reader reader = new ParallelReader(Csv.getReaderQuotes(), executorService, 1024 * 1024)) {
+        try(Reader reader = Csv.getParallelReaderQuotes(executorService)) {
             MappingIterator<String[]> iterator = csvMapper.readerFor(String[].class).readValues(reader);
 
             while (iterator.hasNext()) {
