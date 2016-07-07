@@ -2,7 +2,6 @@ package org.simpleflatmapper.param;
 
 import org.sfm.csv.CsvParser;
 import org.sfm.utils.ParallelReader;
-import org.simpleflatmapper.SfmCsvParserBenchmark;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -26,15 +25,14 @@ public class Csv {
 
     public static final String fileName = System.getProperty("java.io.tmpdir") + File.separator + "worldcitiespop.txt";
     public static final String fileNameQuotes = System.getProperty("java.io.tmpdir") + File.separator + "worldcitiespop2.txt";
-    public static final int PARALLEL_BUFFER_SIZE = SfmCsvParserBenchmark.BUFFER_SIZE * 16;
 
 
-    public static Reader getParallelReader(ExecutorService executorService) throws IOException {
-        return new ParallelReader(Csv.getReader(), executorService, PARALLEL_BUFFER_SIZE);
+    public static Reader getParallelReader(ExecutorService executorService, int bufferSize) throws IOException {
+        return new ParallelReader(Csv.getReader(), executorService, bufferSize * 1024);
     }
 
-    public static Reader getParallelReaderQuotes(ExecutorService executorService) throws IOException {
-        return new ParallelReader(Csv.getReaderQuotes(), executorService, PARALLEL_BUFFER_SIZE);
+    public static Reader getParallelReaderQuotes(ExecutorService executorService, int bufferSize) throws IOException {
+        return new ParallelReader(Csv.getReaderQuotes(), executorService, bufferSize * 1024);
     }
     public static Reader getReader() throws IOException {
         File file = new File(fileName);

@@ -3,11 +3,7 @@ package org.simpleflatmapper;
 import com.univocity.parsers.common.ParsingContext;
 import com.univocity.parsers.common.processor.AbstractRowProcessor;
 import com.univocity.parsers.csv.CsvParserSettings;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.annotations.TearDown;
+import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.sfm.utils.ParallelReader;
 import org.simpleflatmapper.param.Csv;
@@ -20,6 +16,9 @@ import java.util.concurrent.Executors;
 @State(Scope.Benchmark)
 public class UnivocityParallelCsvParserBenchmark {
 
+
+    @Param(value = {"32"})
+    public int parallelBufferSize;
 
     private ExecutorService executorService;
 
@@ -51,7 +50,7 @@ public class UnivocityParallelCsvParserBenchmark {
         });
 
         com.univocity.parsers.csv.CsvParser parser = new com.univocity.parsers.csv.CsvParser(settings);
-        try(Reader reader = Csv.getParallelReader(executorService)) {
+        try(Reader reader = Csv.getParallelReader(executorService, parallelBufferSize)) {
             parser.parse(reader);
         }
     }
@@ -75,7 +74,7 @@ public class UnivocityParallelCsvParserBenchmark {
         });
 
         com.univocity.parsers.csv.CsvParser parser = new com.univocity.parsers.csv.CsvParser(settings);
-        try(Reader reader = Csv.getParallelReaderQuotes(executorService)) {
+        try(Reader reader = Csv.getParallelReaderQuotes(executorService, parallelBufferSize)) {
             parser.parse(reader);
         }
     }
