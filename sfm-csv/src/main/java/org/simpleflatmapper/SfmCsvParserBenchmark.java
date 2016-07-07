@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 public class SfmCsvParserBenchmark {
-    public static final int BUFFER_SIZE = 1024 * 32;
+    public static final int BUFFER_SIZE = 1024 * 8;
     @Benchmark
     public void parseCsv(Blackhole blackhole) throws IOException {
         try(Reader reader = Csv.getReader()) {

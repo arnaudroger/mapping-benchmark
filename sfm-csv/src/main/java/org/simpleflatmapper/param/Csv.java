@@ -2,15 +2,14 @@ package org.simpleflatmapper.param;
 
 import org.sfm.csv.CsvParser;
 import org.sfm.utils.ParallelReader;
+import org.simpleflatmapper.SfmCsvParserBenchmark;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -27,15 +26,15 @@ public class Csv {
 
     public static final String fileName = System.getProperty("java.io.tmpdir") + File.separator + "worldcitiespop.txt";
     public static final String fileNameQuotes = System.getProperty("java.io.tmpdir") + File.separator + "worldcitiespop2.txt";
-    public static final int BUFFER_SIZE = 1024 * 1024 * 32;
+    public static final int PARALLEL_BUFFER_SIZE = SfmCsvParserBenchmark.BUFFER_SIZE * 16;
 
 
     public static Reader getParallelReader(ExecutorService executorService) throws IOException {
-        return new ParallelReader(Csv.getReader(), executorService, BUFFER_SIZE);
+        return new ParallelReader(Csv.getReader(), executorService, PARALLEL_BUFFER_SIZE);
     }
 
     public static Reader getParallelReaderQuotes(ExecutorService executorService) throws IOException {
-        return new ParallelReader(Csv.getReaderQuotes(), executorService, BUFFER_SIZE);
+        return new ParallelReader(Csv.getReaderQuotes(), executorService, PARALLEL_BUFFER_SIZE);
     }
     public static Reader getReader() throws IOException {
         File file = new File(fileName);
