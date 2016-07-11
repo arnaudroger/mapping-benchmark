@@ -5,7 +5,6 @@ import com.univocity.parsers.common.processor.AbstractRowProcessor;
 import com.univocity.parsers.csv.CsvParserSettings;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
-import org.sfm.utils.ParallelReader;
 import org.simpleflatmapper.param.Csv;
 
 import java.io.IOException;

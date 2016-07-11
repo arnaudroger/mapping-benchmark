@@ -1,7 +1,6 @@
 package org.simpleflatmapper.param;
 
 import org.sfm.csv.CsvParser;
-import org.sfm.utils.ParallelReader;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -28,11 +27,13 @@ public class Csv {
 
 
     public static Reader getParallelReader(ExecutorService executorService, int bufferSize) throws IOException {
-        return new ParallelReader(Csv.getReader(), executorService, bufferSize * 1024);
+        //return null;
+        return new org.sfm.utils.ParallelReader(Csv.getReader(), executorService, bufferSize * 1024);
     }
 
     public static Reader getParallelReaderQuotes(ExecutorService executorService, int bufferSize) throws IOException {
-        return new ParallelReader(Csv.getReaderQuotes(), executorService, bufferSize * 1024);
+        //return null;
+        return new org.sfm.utils.ParallelReader(Csv.getReaderQuotes(), executorService, bufferSize * 1024);
     }
     public static Reader getReader() throws IOException {
         File file = new File(fileName);
