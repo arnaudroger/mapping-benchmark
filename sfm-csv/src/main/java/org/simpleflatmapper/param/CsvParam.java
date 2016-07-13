@@ -1,6 +1,12 @@
 package org.simpleflatmapper.param;
 
+import org.openjdk.jmh.annotations.Param;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.TearDown;
 import org.sfm.csv.CsvParser;
+import org.sfm.utils.ParallelReader;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -15,10 +21,21 @@ import java.io.Reader;
 import java.io.Writer;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 import java.util.zip.GZIPInputStream;
 
-public class Csv {
+@State(Scope.Benchmark)
+public class CsvParam {
 
+    @Param(value={"false", "true"})
+    public boolean parallel;
+    @Param(value={"false", "true"})
+    public boolean quotes;
+
+    @Param(value={"64"})
+    public int parallelBuffersize;
+    public ExecutorService executorService;
 
     public static final String url = new String("http://www.maxmind.com/download/worldcities/worldcitiespop.txt.gz");
 
@@ -26,16 +43,45 @@ public class Csv {
     public static final String fileNameQuotes = System.getProperty("java.io.tmpdir") + File.separator + "worldcitiespop2.txt";
 
 
-    public static Reader getParallelReader(ExecutorService executorService, int bufferSize) throws IOException {
-        //return null;
-        return new org.sfm.utils.ParallelReader(Csv.getReader(), executorService, bufferSize * 1024);
+    @Setup
+    public void setUp() {
+        executorService = Executors.newSingleThreadExecutor(new ThreadFactory() {
+            @Override
+            public Thread newThread(Runnable r) {
+                return new Thread(r);
+            }
+        });
     }
 
-    public static Reader getParallelReaderQuotes(ExecutorService executorService, int bufferSize) throws IOException {
-        //return null;
-        return new org.sfm.utils.ParallelReader(Csv.getReaderQuotes(), executorService, bufferSize * 1024);
+    @TearDown
+    public void tearDown() {
+        executorService.shutdown();
     }
-    public static Reader getReader() throws IOException {
+
+    public Reader getReader() throws IOException {
+        Reader reader;
+
+        reader = getSingleThreadedReader(quotes);
+
+
+        if (parallel) {
+            reader = new ParallelReader(reader, executorService, parallelBuffersize * 1024);
+        }
+
+        return reader;
+    }
+
+    public static Reader getSingleThreadedReader(boolean quotes) throws IOException {
+        Reader reader;
+        if (quotes) {
+            reader = _getReaderQuotes();
+        } else {
+            reader = _getReader();
+        }
+        return reader;
+    }
+
+    private static Reader _getReader() throws IOException {
         File file = new File(fileName);
         if (!file.exists()) {
             byte[] buffer = new byte[4096];
@@ -51,7 +97,7 @@ public class Csv {
         return newReader(file);
     }
 
-    public static Reader getReaderQuotes() throws IOException {
+    private static Reader _getReaderQuotes() throws IOException {
         File file = new File(fileNameQuotes);
         if (!file.exists()) {
             try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
@@ -88,4 +134,5 @@ public class Csv {
     private static Reader newReader(File file) throws FileNotFoundException {
         return new InputStreamReader(new FileInputStream(file));
     }
+
 }
