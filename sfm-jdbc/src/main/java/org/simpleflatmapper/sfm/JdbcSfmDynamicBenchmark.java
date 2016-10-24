@@ -2,10 +2,9 @@ package org.simpleflatmapper.sfm;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
-import org.sfm.jdbc.JdbcMapper;
-import org.sfm.jdbc.JdbcMapperFactory;
-import org.sfm.reflect.asm.AsmHelper;
-import org.sfm.utils.RowHandler;
+import org.simpleflatmapper.jdbc.JdbcMapper;
+import org.simpleflatmapper.jdbc.JdbcMapperFactory;
+import org.simpleflatmapper.util.CheckedConsumer;
 import org.simpleflatmapper.beans.MappedObject16;
 import org.simpleflatmapper.beans.MappedObject4;
 import org.simpleflatmapper.db.ConnectionParam;
@@ -21,10 +20,6 @@ public class JdbcSfmDynamicBenchmark {
 	private JdbcMapper<MappedObject16> mapper16;
 	@Setup
 	public void init() {
-		if (! AsmHelper.isAsmPresent()) {
-			throw new RuntimeException("Asm not present or incompatible");
-		}
-		
 		mapper4 = JdbcMapperFactory.newInstance().newMapper(MappedObject4.class);
 		mapper16 = JdbcMapperFactory.newInstance().newMapper(MappedObject16.class);
 	}
@@ -35,9 +30,9 @@ public class JdbcSfmDynamicBenchmark {
 				new ResultSetHandler() {
 					@Override
 					public void handle(ResultSet rs) throws Exception {
-						mapper4.forEach(rs, new RowHandler<MappedObject4>() {
+						mapper4.forEach(rs, new CheckedConsumer<MappedObject4>() {
 							@Override
-							public void handle(MappedObject4 mappedObject4) throws Exception {
+							public void accept(MappedObject4 mappedObject4) throws Exception {
 								blackhole.consume(mappedObject4);
 							}
 						});
@@ -50,9 +45,9 @@ public class JdbcSfmDynamicBenchmark {
 				new ResultSetHandler() {
 					@Override
 					public void handle(ResultSet rs) throws Exception {
-						mapper16.forEach(rs, new RowHandler<MappedObject16>() {
+						mapper16.forEach(rs, new CheckedConsumer<MappedObject16>() {
 							@Override
-							public void handle(MappedObject16 mappedObject4) throws Exception {
+							public void accept(MappedObject16 mappedObject4) throws Exception {
 								blackhole.consume(mappedObject4);
 							}
 						});

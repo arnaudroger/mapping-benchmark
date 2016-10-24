@@ -6,7 +6,7 @@ import com.mysema.query.types.Projections;
 import com.mysema.query.types.QBean;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
-import org.sfm.querydsl.QueryDslMappingProjection;
+import org.simpleflatmapper.querydsl.QueryDslMappingProjection;
 import org.simpleflatmapper.beans.MappedObject16;
 import org.simpleflatmapper.beans.MappedObject4;
 import org.simpleflatmapper.db.ConnectionParam;

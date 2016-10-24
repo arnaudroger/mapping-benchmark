@@ -40,8 +40,8 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
-import org.sfm.datastax.DatastaxCrud;
-import org.sfm.datastax.DatastaxMapperFactory;
+import org.simpleflatmapper.datastax.DatastaxCrud;
+import org.simpleflatmapper.datastax.DatastaxMapperFactory;
 import org.simpleflatmapper.beans.Object16Fields;
 import org.simpleflatmapper.beans.Object4Fields;
 

@@ -46,7 +46,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
     <dependencies>
         <dependency>
             <groupId>org.simpleflatmapper</groupId>
-            <artifactId>sfm</artifactId>
+            <artifactId>sfm-jdbc</artifactId>
             <version>${sfm.version}</version>
         </dependency>
         <dependency>

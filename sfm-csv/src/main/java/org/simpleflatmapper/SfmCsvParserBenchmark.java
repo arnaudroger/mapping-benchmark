@@ -7,7 +7,7 @@ import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.infra.Blackhole;
-import org.sfm.csv.CsvParser;
+import org.simpleflatmapper.csv.CsvParser;
 import org.simpleflatmapper.param.CsvParam;
 
 import java.io.IOException;

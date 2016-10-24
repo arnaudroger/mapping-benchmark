@@ -1,9 +1,9 @@
 package results;
 
-import org.sfm.csv.CellValueReader;
-import org.sfm.csv.CsvColumnDefinition;
-import org.sfm.csv.CsvParser;
-import org.sfm.csv.ParsingContext;
+import org.simpleflatmapper.csv.CellValueReader;
+import org.simpleflatmapper.csv.CsvColumnDefinition;
+import org.simpleflatmapper.csv.CsvParser;
+import org.simpleflatmapper.csv.ParsingContext;
 import org.simpleflatmapper.db.DbTarget;
 
 import java.io.FileReader;

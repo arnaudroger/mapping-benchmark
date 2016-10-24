@@ -5,7 +5,7 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.infra.Blackhole;
-import org.sfm.jdbc.spring.JdbcTemplateMapperFactory;
+import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.simpleflatmapper.beans.MappedObject16;
 import org.simpleflatmapper.beans.MappedObject4;
 import org.simpleflatmapper.db.ConnectionParam;

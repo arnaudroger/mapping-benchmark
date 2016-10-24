@@ -5,8 +5,8 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
-import org.sfm.csv.CsvParser;
-import org.sfm.utils.ParallelReader;
+import org.simpleflatmapper.csv.CsvParser;
+import org.simpleflatmapper.util.ParallelReader;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

@@ -2,7 +2,7 @@ package org.simpleflatmapper.sql2o;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
-import org.sfm.sql2o.SfmResultSetHandlerFactoryBuilder;
+import org.simpleflatmapper.sql2o.SfmResultSetHandlerFactoryBuilder;
 import org.simpleflatmapper.beans.MappedObject16;
 import org.simpleflatmapper.beans.MappedObject4;
 import org.simpleflatmapper.db.ConnectionParam;

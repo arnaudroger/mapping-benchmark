@@ -5,8 +5,8 @@ import com.datastax.driver.mapping.Mapper;
 import com.datastax.driver.mapping.MappingManager;
 import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.thrift.transport.TTransportException;
-import org.sfm.datastax.DatastaxMapper;
-import org.sfm.datastax.DatastaxMapperFactory;
+import org.simpleflatmapper.datastax.DatastaxMapper;
+import org.simpleflatmapper.datastax.DatastaxMapperFactory;
 import org.simpleflatmapper.beans.Object4Fields;
 
 import java.io.IOException;
