@@ -39,8 +39,13 @@ public class CsvParam {
 
     public static final String url = new String("http://www.maxmind.com/download/worldcities/worldcitiespop.txt.gz");
 
-    public static final String fileName = System.getProperty("java.io.tmpdir") + File.separator + "worldcitiespop.txt";
-    public static final String fileNameQuotes = System.getProperty("java.io.tmpdir") + File.separator + "worldcitiespop2.txt";
+    public static final String fileName = getFileDirectory() + File.separator + "worldcitiespop.txt";
+
+    private static String getFileDirectory() {
+        return System.getProperty("csv.dir", System.getProperty("java.io.tmpdir"));
+    }
+
+    public static final String fileNameQuotes = getFileDirectory() + File.separator + "worldcitiespop2.txt";
 
 
     @Setup
