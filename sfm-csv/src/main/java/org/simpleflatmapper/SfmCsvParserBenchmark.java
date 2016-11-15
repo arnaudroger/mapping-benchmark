@@ -8,6 +8,7 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.infra.Blackhole;
 import org.simpleflatmapper.csv.CsvParser;
+import org.simpleflatmapper.csv.CsvReader;
 import org.simpleflatmapper.param.CsvParam;
 
 import java.io.IOException;
@@ -21,14 +22,18 @@ public class SfmCsvParserBenchmark {
     @Benchmark
     public void parseCsvCallback(Blackhole blackhole, CsvParam csvParam) throws IOException {
         try(Reader reader = csvParam.getReader()) {
-            CsvParser.bufferSize(bufferSize * 1024).reader(reader).read(blackhole::consume);
+            getReader(reader, bufferSize).read(blackhole::consume);
         }
+    }
+
+    public static CsvReader getReader(Reader reader, int bufferSize) throws IOException {
+        return CsvParser.bufferSize(bufferSize * 1024).reader(reader);
     }
 
     @Benchmark
     public void parseCsvIterate(Blackhole blackhole, CsvParam csvParam) throws IOException {
         try(Reader reader = csvParam.getReader()) {
-            for(String[] row : CsvParser.bufferSize(bufferSize * 1024).reader(reader)) {
+            for(String[] row : getReader(reader, bufferSize)) {
                 blackhole.consume(row);
             }
         }
