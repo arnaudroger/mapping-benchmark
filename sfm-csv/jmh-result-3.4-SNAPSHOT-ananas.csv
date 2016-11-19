@@ -1,0 +1,27 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: bufferSize","Param: parallel","Param: parallelBuffersize","Param: quotes"
+"org.simpleflatmapper.JacksonCsvParserBenchmark.parseCsv","avgt",1,200,1.727266,0.005435,"s/op",,false,64,false
+"org.simpleflatmapper.JacksonCsvParserBenchmark.parseCsv","avgt",1,200,2.411948,0.045345,"s/op",,false,64,true
+"org.simpleflatmapper.JacksonCsvParserBenchmark.parseCsv","avgt",1,200,1.700870,0.030237,"s/op",,true,64,false
+"org.simpleflatmapper.JacksonCsvParserBenchmark.parseCsv","avgt",1,200,1.854073,0.023755,"s/op",,true,64,true
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvCallback","avgt",1,200,1.369117,0.003927,"s/op",4,false,64,false
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvCallback","avgt",1,200,2.029968,0.038754,"s/op",4,false,64,true
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvCallback","avgt",1,200,1.218617,0.014351,"s/op",4,true,64,false
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvCallback","avgt",1,200,1.386107,0.030699,"s/op",4,true,64,true
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvIterate","avgt",1,200,1.402930,0.004964,"s/op",4,false,64,false
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvIterate","avgt",1,200,2.154764,0.007551,"s/op",4,false,64,true
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvIterate","avgt",1,200,1.279148,0.016299,"s/op",4,true,64,false
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvIterate","avgt",1,200,1.477446,0.029198,"s/op",4,true,64,true
+"org.simpleflatmapper.SfmTrimConfigurableCsvParserBenchmark.parseCsvCallback","avgt",1,200,1.519838,0.006420,"s/op",4,false,64,false
+"org.simpleflatmapper.SfmTrimConfigurableCsvParserBenchmark.parseCsvCallback","avgt",1,200,1.968335,0.042906,"s/op",4,false,64,true
+"org.simpleflatmapper.SfmTrimConfigurableCsvParserBenchmark.parseCsvCallback","avgt",1,200,1.353115,0.014624,"s/op",4,true,64,false
+"org.simpleflatmapper.SfmTrimConfigurableCsvParserBenchmark.parseCsvCallback","avgt",1,200,1.358209,0.027378,"s/op",4,true,64,true
+"org.simpleflatmapper.SfmTrimConfigurableCsvParserBenchmark.parseCsvIterate","avgt",1,200,1.527663,0.005213,"s/op",4,false,64,false
+"org.simpleflatmapper.SfmTrimConfigurableCsvParserBenchmark.parseCsvIterate","avgt",1,200,2.137352,0.039742,"s/op",4,false,64,true
+"org.simpleflatmapper.SfmTrimConfigurableCsvParserBenchmark.parseCsvIterate","avgt",1,200,1.417047,0.020110,"s/op",4,true,64,false
+"org.simpleflatmapper.SfmTrimConfigurableCsvParserBenchmark.parseCsvIterate","avgt",1,200,1.539633,0.027887,"s/op",4,true,64,true
+"org.simpleflatmapper.UnivocityConcurrentCsvParserBenchmark.parseCsv","avgt",1,200,1.517871,0.003662,"s/op",,,,false
+"org.simpleflatmapper.UnivocityConcurrentCsvParserBenchmark.parseCsv","avgt",1,200,2.415919,0.003784,"s/op",,,,true
+"org.simpleflatmapper.UnivocityCsvParserBenchmark.parseCsv","avgt",1,200,1.746867,0.004355,"s/op",,false,64,false
+"org.simpleflatmapper.UnivocityCsvParserBenchmark.parseCsv","avgt",1,200,3.164443,0.006660,"s/op",,false,64,true
+"org.simpleflatmapper.UnivocityCsvParserBenchmark.parseCsv","avgt",1,200,1.677927,0.035138,"s/op",,true,64,false
+"org.simpleflatmapper.UnivocityCsvParserBenchmark.parseCsv","avgt",1,200,2.608735,0.046980,"s/op",,true,64,true
