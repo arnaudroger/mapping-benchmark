@@ -17,27 +17,34 @@ import java.io.Reader;
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.AverageTime)
 public class SfmCsvParserBenchmark {
+
+    @Param(value={"false"})
+    public boolean trim;
+
     @Param(value = {"4"})
     public int bufferSize;
     @Benchmark
     public void parseCsvCallback(Blackhole blackhole, CsvParam csvParam) throws IOException {
         try(Reader reader = csvParam.getReader()) {
-            getReader(reader, bufferSize).read(blackhole::consume);
+            getReader(reader, bufferSize, trim).read(blackhole::consume);
         }
-    }
-
-    public static CsvReader getReader(Reader reader, int bufferSize) throws IOException {
-        return CsvParser.bufferSize(bufferSize * 1024).reader(reader);
     }
 
     @Benchmark
     public void parseCsvIterate(Blackhole blackhole, CsvParam csvParam) throws IOException {
         try(Reader reader = csvParam.getReader()) {
-            for(String[] row : getReader(reader, bufferSize)) {
+            for(String[] row : getReader(reader, bufferSize, trim)) {
                 blackhole.consume(row);
             }
         }
     }
 
+    public static CsvReader getReader(Reader reader, int bufferSize, boolean trim) throws IOException {
+        CsvParser.DSL dsl = CsvParser.bufferSize(bufferSize * 1024);
+        if (trim) {
+            dsl = dsl.trimSpaces();
+        }
+        return dsl.reader(reader);
+    }
 
 }
