@@ -11,6 +11,7 @@ import org.simpleflatmapper.param.CsvParam;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Arrays;
 
 @BenchmarkMode(Mode.AverageTime)
 public class UnivocityCsvParserBenchmark {
@@ -30,6 +31,32 @@ public class UnivocityCsvParserBenchmark {
             @Override
             public void rowProcessed(String[] row, ParsingContext context) {
                 blackhole.consume(row);
+            }
+        });
+
+        com.univocity.parsers.csv.CsvParser parser = new com.univocity.parsers.csv.CsvParser(settings);
+        try(Reader reader = csvParam.getReader()) {
+            parser.parse(reader);
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        CsvParam csvParam = new CsvParam();
+        csvParam.setUp();
+
+        CsvParserSettings settings = new CsvParserSettings();
+
+        //turning off features enabled by default
+        settings.setIgnoreLeadingWhitespaces(false);
+        settings.setIgnoreTrailingWhitespaces(false);
+        settings.setSkipEmptyLines(false);
+        settings.setColumnReorderingEnabled(false);
+        settings.setReadInputOnSeparateThread(false);
+
+        settings.setRowProcessor(new AbstractRowProcessor() {
+            @Override
+            public void rowProcessed(String[] row, ParsingContext context) {
+                System.out.println("row = " + Arrays.toString(row));
             }
         });
 
