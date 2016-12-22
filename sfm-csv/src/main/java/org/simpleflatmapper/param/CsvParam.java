@@ -6,6 +6,8 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.simpleflatmapper.csv.CsvParser;
+import org.simpleflatmapper.csv.CsvReader;
+import org.simpleflatmapper.util.CheckedConsumer;
 import org.simpleflatmapper.util.ParallelReader;
 
 import java.io.BufferedInputStream;
@@ -23,6 +25,7 @@ import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.function.Function;
 import java.util.zip.GZIPInputStream;
 
 @State(Scope.Benchmark)
@@ -35,6 +38,10 @@ public class CsvParam {
 
     @Param(value={"64"})
     public int parallelBuffersize;
+
+    @Param(value={"10","1000","100000","-1"})
+    public int nbRows;
+
     public ExecutorService executorService;
 
     public static final String url = new String("http://www.maxmind.com/download/worldcities/worldcitiespop.txt.gz");
@@ -64,10 +71,7 @@ public class CsvParam {
     }
 
     public Reader getReader() throws IOException {
-        Reader reader;
-
-        reader = getSingleThreadedReader(quotes);
-
+        Reader reader = getSingleThreadedReader(quotes, nbRows);
 
         if (parallel) {
             reader = new ParallelReader(reader, executorService, parallelBuffersize * 1024);
@@ -76,64 +80,95 @@ public class CsvParam {
         return reader;
     }
 
-    public static Reader getSingleThreadedReader(boolean quotes) throws IOException {
+    public static Reader getSingleThreadedReader(boolean quotes, int nbRows) throws IOException {
         Reader reader;
         if (quotes) {
-            reader = _getReaderQuotes();
+            reader = _getReaderQuotes(nbRows);
         } else {
-            reader = _getReader();
+            reader = _getReader(nbRows);
         }
         return reader;
     }
 
-    private static Reader _getReader() throws IOException {
-        File file = new File(fileName);
+    private static Reader _getReader(int nbRows) throws IOException {
+        File file = getFileName(nbRows, CsvParam.fileName);
         if (!file.exists()) {
-            byte[] buffer = new byte[4096];
-            try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-                 BufferedInputStream bis = new BufferedInputStream(new GZIPInputStream(new URL(url).openStream()))
-                ) {
-                int l;
-                while((l = bis.read(buffer)) != -1) {
-                    bos.write(buffer, 0, l);
-                }
-            }
+            rewriteFile(nbRows, file, CsvParam::getRewriter);
         }
         return newReader(file);
     }
 
-    private static Reader _getReaderQuotes() throws IOException {
-        File file = new File(fileNameQuotes);
+    private static File getFileName(int nbRows, String f) {
+        return new File(nbRows == -1 ? f : appendNbRow(f, nbRows));
+    }
+
+    private static Reader _getReaderQuotes(int nbRows) throws IOException {
+        File file = getFileName(nbRows, fileNameQuotes);
         if (!file.exists()) {
-            try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-                 BufferedInputStream bis = new BufferedInputStream(new GZIPInputStream(new URL(url).openStream()));
-                 Writer writer = new OutputStreamWriter(bos)
-            ) {
-                CsvParser.reader(new InputStreamReader(bis)).read(
-                        (row) -> {
-                            for(int i = 0; i < row.length; i++) {
-                                String cell = row[i];
-                                if (i>0) {
-                                    writer.write(",");
-                                }
-                                writer.write("\"");
-
-                                for(int j = 0; j < cell.length(); j++) {
-                                    char c = cell.charAt(j);
-                                    if (c == '"') {
-                                        writer.append('"');
-                                    }
-                                    writer.append(c);
-                                }
-                                writer.write("\"");
-                            }
-                            writer.write("\n");
-                        }
-
-                );
-            }
+            rewriteFile(nbRows, file, CsvParam::getQuotesRewriter);
         }
         return newReader(file);
+    }
+
+    private static String appendNbRow(String fileNameQuotes, int nbRows) {
+        int i = fileNameQuotes.lastIndexOf('.');
+        return fileNameQuotes.substring(0, i) + "-" + nbRows + fileNameQuotes.substring(i);
+    }
+
+    private static void rewriteFile(int nbRows, File file, Function<Writer, CheckedConsumer<String[]>> rewriterFunction) throws IOException {
+        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+             Writer writer = new OutputStreamWriter(bos)) {
+            CheckedConsumer<String[]> rewriter = rewriterFunction.apply(writer);
+            try (
+                    BufferedInputStream bis = new BufferedInputStream(new GZIPInputStream(new URL(url).openStream()));
+
+            ) {
+
+                CsvParser.DSL dsl = CsvParser.dsl();
+                CsvReader reader = dsl.reader(new InputStreamReader(bis));
+
+                if (nbRows == -1) {
+                    reader.read(rewriter);
+                } else {
+                    reader.read(rewriter, nbRows);
+                }
+            }
+        }
+    }
+
+    private static CheckedConsumer<String[]> getQuotesRewriter(Writer writer) {
+        return (row) -> {
+                        for (int i = 0; i < row.length; i++) {
+                            String cell = row[i];
+                            if (i > 0) {
+                                writer.write(",");
+                            }
+                            writer.write("\"");
+
+                            for (int j = 0; j < cell.length(); j++) {
+                                char c = cell.charAt(j);
+                                if (c == '"') {
+                                    writer.append('"');
+                                }
+                                writer.append(c);
+                            }
+                            writer.write("\"");
+                        }
+                        writer.write("\n");
+                    };
+    }
+
+    private static CheckedConsumer<String[]> getRewriter(Writer writer) {
+        return (row) -> {
+            for (int i = 0; i < row.length; i++) {
+                String cell = row[i];
+                if (i > 0) {
+                    writer.write(",");
+                }
+                writer.write(cell);
+            }
+            writer.write("\n");
+        };
     }
 
     private static Reader newReader(File file) throws FileNotFoundException {

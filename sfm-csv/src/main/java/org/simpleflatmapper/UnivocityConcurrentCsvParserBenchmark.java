@@ -21,6 +21,8 @@ public class UnivocityConcurrentCsvParserBenchmark {
 
     @Param(value={"false", "true"})
     public boolean quotes;
+    @Param(value={"10","1000","100000","-1"})
+    public int nbRows;
 
     @Benchmark
     public void parseCsv(Blackhole blackhole) throws IOException {
@@ -41,7 +43,7 @@ public class UnivocityConcurrentCsvParserBenchmark {
         });
 
         com.univocity.parsers.csv.CsvParser parser = new com.univocity.parsers.csv.CsvParser(settings);
-        try(Reader reader = CsvParam.getSingleThreadedReader(quotes)) {
+        try(Reader reader = CsvParam.getSingleThreadedReader(quotes, nbRows)) {
             parser.parse(reader);
         }
     }
