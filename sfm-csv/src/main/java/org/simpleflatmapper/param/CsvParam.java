@@ -37,10 +37,10 @@ public class CsvParam {
     public boolean quotes;
 
     @Param(value={"64"})
-    public int parallelBuffersize;
+    public int parallelBuffersize = 64;
 
     @Param(value={"10","1000","100000","-1"})
-    public int nbRows;
+    public int nbRows = 10;
 
     public ExecutorService executorService;
 

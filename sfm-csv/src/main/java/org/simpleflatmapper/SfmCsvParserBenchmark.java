@@ -23,6 +23,14 @@ public class SfmCsvParserBenchmark {
 
     @Param(value = {"4"})
     public int bufferSize;
+
+    @Benchmark
+    public void mapCsvCallback(Blackhole blackhole, CsvParam csvParam) throws IOException {
+        try(Reader reader = csvParam.getReader()) {
+            getDsl(bufferSize, trim).mapTo(City.class).forEach(reader, blackhole::consume);
+        }
+    }
+
     @Benchmark
     public void parseCsvCallback(Blackhole blackhole, CsvParam csvParam) throws IOException {
         try(Reader reader = csvParam.getReader()) {
@@ -40,11 +48,16 @@ public class SfmCsvParserBenchmark {
     }
 
     public static CsvReader getReader(Reader reader, int bufferSize, boolean trim) throws IOException {
+        CsvParser.DSL dsl = getDsl(bufferSize, trim);
+        return dsl.reader(reader);
+    }
+
+    private static CsvParser.DSL getDsl(int bufferSize, boolean trim) {
         CsvParser.DSL dsl = CsvParser.bufferSize(bufferSize * 1024);
         if (trim) {
             dsl = dsl.trimSpaces();
         }
-        return dsl.reader(reader);
+        return dsl;
     }
 
 }
