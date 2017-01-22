@@ -5,6 +5,7 @@ import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.infra.Blackhole;
 import org.simpleflatmapper.csv.CsvParser;
@@ -24,32 +25,36 @@ public class SfmCsvParserBenchmark {
     @Param(value = {"4"})
     public int bufferSize;
 
+    CsvParser.DSL dsl;
+    private CsvParser.MapToDSL<City> mapToDSL;
+
+    @Setup
+    public void setUp() {
+        dsl = getDsl(bufferSize, trim);
+        mapToDSL = dsl.mapTo(City.class);
+    }
+
     @Benchmark
     public void mapCsvCallback(Blackhole blackhole, CsvParam csvParam) throws IOException {
         try(Reader reader = csvParam.getReader()) {
-            getDsl(bufferSize, trim).mapTo(City.class).forEach(reader, blackhole::consume);
+            mapToDSL.forEach(reader, blackhole::consume);
         }
     }
 
     @Benchmark
     public void parseCsvCallback(Blackhole blackhole, CsvParam csvParam) throws IOException {
         try(Reader reader = csvParam.getReader()) {
-            getReader(reader, bufferSize, trim).read(blackhole::consume);
+            dsl.reader(reader).read(blackhole::consume);
         }
     }
 
     @Benchmark
     public void parseCsvIterate(Blackhole blackhole, CsvParam csvParam) throws IOException {
         try(Reader reader = csvParam.getReader()) {
-            for(String[] row : getReader(reader, bufferSize, trim)) {
+            for(String[] row : dsl.reader(reader)) {
                 blackhole.consume(row);
             }
         }
-    }
-
-    public static CsvReader getReader(Reader reader, int bufferSize, boolean trim) throws IOException {
-        CsvParser.DSL dsl = getDsl(bufferSize, trim);
-        return dsl.reader(reader);
     }
 
     private static CsvParser.DSL getDsl(int bufferSize, boolean trim) {
