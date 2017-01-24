@@ -22,7 +22,7 @@ public class UnivocityConcurrentCsvParserBenchmark {
 
     @Param(value={"false", "true"})
     public boolean quotes;
-    @Param(value={"10","1000","100000","-1"})
+    @Param(value={"1", "10","1000","100000","-1"})
     public int nbRows;
 
     @Benchmark

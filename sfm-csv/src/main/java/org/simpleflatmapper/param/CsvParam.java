@@ -39,7 +39,7 @@ public class CsvParam {
     @Param(value={"64"})
     public int parallelBuffersize = 64;
 
-    @Param(value={"10","1000","100000","-1"})
+    @Param(value={"1", "10","1000","100000","-1"})
     public int nbRows = 10;
 
     public ExecutorService executorService;
