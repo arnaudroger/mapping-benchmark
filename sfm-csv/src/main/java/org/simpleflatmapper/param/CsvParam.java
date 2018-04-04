@@ -36,7 +36,7 @@ public class CsvParam {
     @Param(value={"false", "true"})
     public boolean quotes;
 
-    @Param(value={"64"})
+    @Param(value={"8192"})
     public int parallelBuffersize = 64;
 
     @Param(value={"1", "10","1000","100000","-1"})
@@ -74,7 +74,7 @@ public class CsvParam {
         Reader reader = getSingleThreadedReader(quotes, nbRows);
 
         if (parallel) {
-            reader = new ParallelReader(reader, executorService, parallelBuffersize * 1024);
+            reader = new ParallelReader(reader, executorService, parallelBuffersize * 1024, 8092);//, i -> { Thread.yield(); return i; });
         }
 
         return reader;
