@@ -6,7 +6,7 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.simpleflatmapper.csv.CsvParser;
-import org.simpleflatmapper.csv.CsvReader;
+import org.simpleflatmapper.lightningcsv.CsvReader;
 import org.simpleflatmapper.util.CheckedConsumer;
 import org.simpleflatmapper.util.ParallelReader;
 
