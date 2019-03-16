@@ -28,7 +28,7 @@ public class UnivocityCsvParserBenchmark {
         settings.setColumnReorderingEnabled(false);
         settings.setReadInputOnSeparateThread(false);
 
-        settings.setRowProcessor(new BeanProcessor<City>(City.class) {
+        settings.setProcessor(new BeanProcessor<City>(City.class) {
             @Override
             public void beanProcessed(City bean, ParsingContext context) {
                 blackhole.consume(bean);
@@ -51,7 +51,7 @@ public class UnivocityCsvParserBenchmark {
         settings.setColumnReorderingEnabled(false);
         settings.setReadInputOnSeparateThread(false);
 
-        settings.setRowProcessor(new AbstractRowProcessor() {
+        settings.setProcessor(new AbstractRowProcessor() {
             @Override
             public void rowProcessed(String[] row, ParsingContext context) {
                 blackhole.consume(row);
