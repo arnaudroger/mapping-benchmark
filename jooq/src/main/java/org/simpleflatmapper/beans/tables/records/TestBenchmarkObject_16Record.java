@@ -709,6 +709,86 @@ public class TestBenchmarkObject_16Record extends UpdatableRecordImpl<TestBenchm
 		return this;
 	}
 
+	@Override
+	public Long component1() {
+		return value1();
+	}
+
+	@Override
+	public String component2() {
+		return value2();
+	}
+
+	@Override
+	public String component3() {
+		return value3();
+	}
+
+	@Override
+	public Integer component4() {
+		return value4();
+	}
+
+	@Override
+	public Short component5() {
+		return value5();
+	}
+
+	@Override
+	public Integer component6() {
+		return value6();
+	}
+
+	@Override
+	public Long component7() {
+		return value7();
+	}
+
+	@Override
+	public Double component8() {
+		return value8();
+	}
+
+	@Override
+	public Double component9() {
+		return value9();
+	}
+
+	@Override
+	public Short component10() {
+		return value10();
+	}
+
+	@Override
+	public Integer component11() {
+		return value11();
+	}
+
+	@Override
+	public Long component12() {
+		return value12();
+	}
+
+	@Override
+	public Double component13() {
+		return value13();
+	}
+
+	@Override
+	public Double component14() {
+		return value14();
+	}
+
+	@Override
+	public Integer component15() {
+		return value15();
+	}
+
+	@Override
+	public Integer component16() {
+		return value16();
+	}
+
 	// -------------------------------------------------------------------------
 	// Constructors
 	// -------------------------------------------------------------------------
