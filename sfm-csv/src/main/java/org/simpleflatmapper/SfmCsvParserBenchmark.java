@@ -9,6 +9,7 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.infra.Blackhole;
 import org.simpleflatmapper.csv.CsvParser;
+import org.simpleflatmapper.lightningcsv.parser.CellConsumer;
 import org.simpleflatmapper.param.CsvParam;
 
 import java.io.IOException;
@@ -53,6 +54,17 @@ public class SfmCsvParserBenchmark {
             for(String[] row : dsl.reader(reader)) {
                 blackhole.consume(row);
             }
+        }
+    }
+
+    @Benchmark
+    public void parseCsvRaw(Blackhole blackhole, CsvParam csvParam) throws IOException {
+        CellConsumer cellConsumer = (chars, offset, length) -> {
+            if (length > 0)
+                blackhole.consume(chars[offset + length - 1]);
+        };
+        try(Reader reader = csvParam.getReader()) {
+            dsl.reader(reader).parseAll(cellConsumer);
         }
     }
 
