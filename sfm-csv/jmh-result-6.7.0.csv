@@ -11,6 +11,10 @@
 "org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvIterate","avgt",1,100,1140.077795,26.373455,"ms/op",4,-1,false,8192,true,false
 "org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvIterate","avgt",1,100,759.303818,1.763482,"ms/op",4,-1,true,8192,false,false
 "org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvIterate","avgt",1,100,826.135993,5.736655,"ms/op",4,-1,true,8192,true,false
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvRaw","avgt",1,100,747.169448,25.336861,"ms/op",4,-1,false,8192,false,false
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvRaw","avgt",1,100,921.164331,34.811298,"ms/op",4,-1,false,8192,true,false
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvRaw","avgt",1,100,530.314691,16.467487,"ms/op",4,-1,true,8192,false,false
+"org.simpleflatmapper.SfmCsvParserBenchmark.parseCsvRaw","avgt",1,100,610.752007,29.524508,"ms/op",4,-1,true,8192,true,false
 "org.simpleflatmapper.UnivocityConcurrentCsvParserBenchmark.parseCsv","avgt",1,100,844.616923,6.912975,"ms/op",,-1,,,false,
 "org.simpleflatmapper.UnivocityConcurrentCsvParserBenchmark.parseCsv","avgt",1,100,1054.229231,4.629142,"ms/op",,-1,,,true,
 "org.simpleflatmapper.UnivocityCsvParserBenchmark.parseCsv","avgt",1,100,1256.019644,7.047505,"ms/op",,-1,false,8192,false,
