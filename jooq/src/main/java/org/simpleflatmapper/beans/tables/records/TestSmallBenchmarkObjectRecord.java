@@ -229,6 +229,26 @@ public class TestSmallBenchmarkObjectRecord extends UpdatableRecordImpl<TestSmal
 		return this;
 	}
 
+	@Override
+	public Long component1() {
+		return value1();
+	}
+
+	@Override
+	public String component2() {
+		return value2();
+	}
+
+	@Override
+	public String component3() {
+		return value3();
+	}
+
+	@Override
+	public Integer component4() {
+		return value4();
+	}
+
 	// -------------------------------------------------------------------------
 	// Constructors
 	// -------------------------------------------------------------------------

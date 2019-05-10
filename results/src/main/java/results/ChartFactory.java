@@ -6,7 +6,6 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.GradientPaintTransformer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,11 +14,8 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.Stream;
 
 /**
  * Created by aroger on 25/10/2015.

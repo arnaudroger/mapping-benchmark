@@ -71,9 +71,9 @@ THE POSSIBILITY OF SUCH DAMAGE.
         </dependency>
         <dependency>
             <groupId>com.github.skjolber.sesseltjonna-csv</groupId>
-            <artifactId>databinder</artifactId>
-            <version>1.0.9</version>
-        </dependency>        
+            <artifactId>parser</artifactId>
+            <version>1.0.11</version>
+        </dependency>
     </dependencies>
 
     <build>

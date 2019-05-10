@@ -15,7 +15,6 @@ import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.TableImpl;
 import org.simpleflatmapper.beans.Keys;
-import org.simpleflatmapper.beans.Sfm;
 import org.simpleflatmapper.beans.tables.records.TestSmallBenchmarkObjectRecord;
 
 

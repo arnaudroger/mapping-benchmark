@@ -57,17 +57,14 @@ THE POSSIBILITY OF SUCH DAMAGE.
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
-            <version>3.7.0</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-meta</artifactId>
-            <version>3.7.0</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-codegen</artifactId>
-            <version>3.7.0</version>
         </dependency>
     </dependencies>
 
@@ -76,112 +73,13 @@ THE POSSIBILITY OF SUCH DAMAGE.
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.2</version>
             </plugin>
-            <!--<plugin>-->
-
-                <!--&lt;!&ndash; Specify the maven code generator plugin &ndash;&gt;-->
-                <!--<groupId>org.jooq</groupId>-->
-                <!--<artifactId>jooq-codegen-maven</artifactId>-->
-                <!--<version>3.7.0</version>-->
-
-                <!--&lt;!&ndash; The plugin should hook into the generate goal &ndash;&gt;-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>generate</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-
-                <!--&lt;!&ndash; Manage the plugin's dependency. In this example, we'll use a PostgreSQL database &ndash;&gt;-->
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>mysql</groupId>-->
-                        <!--<artifactId>mysql-connector-java</artifactId>-->
-                        <!--<version>5.1.36</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
-
-                <!--&lt;!&ndash; Specify the plugin configuration.-->
-                     <!--The configuration format is the same as for the standalone code generator &ndash;&gt;-->
-                <!--<configuration>-->
-
-                    <!--&lt;!&ndash; JDBC connection parameters &ndash;&gt;-->
-                    <!--<jdbc>-->
-                        <!--&lt;!&ndash;-->
-                        		<!--config.setDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlDataSource");-->
-		<!--config.addDataSourceProperty("user", "sfm");-->
-		<!--//config.addDataSourceProperty("password", "");-->
-		<!--config.addDataSourceProperty("url", "jdbc:mysql://localhost/sfm?useServerPrepStmts=true");-->
-		<!--&ndash;&gt;-->
-                        <!--<driver>com.mysql.jdbc.Driver</driver>-->
-                        <!--<url>jdbc:mysql://localhost/sfm</url>-->
-                        <!--<user>sfm</user>-->
-                        <!--<password></password>-->
-                    <!--</jdbc>-->
-
-                    <!--&lt;!&ndash; Generator parameters &ndash;&gt;-->
-                    <!--<generator>-->
-                        <!--<database>-->
-                            <!--<name>org.jooq.util.mysql.MySQLDatabase</name>-->
-                            <!--<includes>.*</includes>-->
-                            <!--<excludes></excludes>-->
-                            <!--<inputSchema>sfm</inputSchema>-->
-                        <!--</database>-->
-                        <!--<target>-->
-                            <!--<packageName>org.simpleflatmapper.jooq.beans</packageName>-->
-                            <!--<directory>src/main/java</directory>-->
-                        <!--</target>-->
-                    <!--</generator>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>2.5</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8.1</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>2.5.1</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.4</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.9.1</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.3</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>2.2.1</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.17</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+
     </build>
 
 </project>
