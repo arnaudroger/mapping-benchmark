@@ -22,11 +22,17 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.function.Function;
 import java.util.zip.GZIPInputStream;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 @State(Scope.Benchmark)
 public class CsvParam {
@@ -44,7 +50,7 @@ public class CsvParam {
 
     public ExecutorService executorService;
 
-    public static final String url = new String("http://www.maxmind.com/download/worldcities/worldcitiespop.txt.gz");
+    public static final String url = "worldcitiespop.txt.gz";
 
     public static final String fileName = getFileDirectory() + File.separator + "worldcitiespop.txt";
 
@@ -120,7 +126,7 @@ public class CsvParam {
              Writer writer = new OutputStreamWriter(bos)) {
             CheckedConsumer<String[]> rewriter = rewriterFunction.apply(writer);
             try (
-                    BufferedInputStream bis = new BufferedInputStream(new GZIPInputStream(new URL(url).openStream()));
+                    BufferedInputStream bis = new BufferedInputStream(new GZIPInputStream(CsvParam.class.getClassLoader().getResourceAsStream(url)))
 
             ) {
 
@@ -171,8 +177,8 @@ public class CsvParam {
         };
     }
 
-    private static Reader newReader(File file) throws FileNotFoundException {
-        return new InputStreamReader(new FileInputStream(file));
+    private static Reader newReader(File file) throws IOException {
+        return Channels.newReader(FileChannel.open(file.toPath()), UTF_8.newDecoder(), -1);
     }
 
 }
