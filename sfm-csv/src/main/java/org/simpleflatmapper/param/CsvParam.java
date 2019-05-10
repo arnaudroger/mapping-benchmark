@@ -44,7 +44,7 @@ public class CsvParam {
 
     public ExecutorService executorService;
 
-    public static final String archiveFileName = getFileDirectory() + File.separator + "worldcitiespop.txt.gz";
+    public static final String url = new String("http://www.maxmind.com/download/worldcities/worldcitiespop.txt.gz");
 
     public static final String fileName = getFileDirectory() + File.separator + "worldcitiespop.txt";
 
@@ -120,7 +120,7 @@ public class CsvParam {
              Writer writer = new OutputStreamWriter(bos)) {
             CheckedConsumer<String[]> rewriter = rewriterFunction.apply(writer);
             try (
-                    BufferedInputStream bis = new BufferedInputStream(new GZIPInputStream(new FileInputStream(new File(archiveFileName))));
+                    BufferedInputStream bis = new BufferedInputStream(new GZIPInputStream(new URL(url).openStream()));
 
             ) {
 
