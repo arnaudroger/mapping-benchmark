@@ -65,7 +65,7 @@
         <spring-jdbc-roma.version>2.0.0.RELEASE</spring-jdbc-roma.version>
         <univocity-parsers.version>2.8.1</univocity-parsers.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
-
+        <sesseltjonna-csv.version>1.0.11</sesseltjonna-csv.version>
 
 
     </properties>
@@ -226,6 +226,11 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.skjolber.sesseltjonna-csv</groupId>
+                <artifactId>parser</artifactId>
+                <version>1.0.11</version>
             </dependency>
 
             <dependency>
