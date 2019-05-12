@@ -52,7 +52,7 @@ public class SesseltjonnaCsvParserBenchmark {
     @Benchmark
     public void parseCsv(Blackhole blackhole, CsvParam csvParam) throws Exception {
         try(Reader reader = csvParam.getReader()) {
-            CsvReader<String[]> csvReader = StringArrayCsvReader.builder().build(csvParam.getReader());
+            CsvReader<String[]> csvReader = StringArrayCsvReader.builder().build(reader);
 
             String[] next;
             do {
@@ -80,6 +80,32 @@ public class SesseltjonnaCsvParserBenchmark {
                 blackhole.consume(next);
             } while(true);
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+    	CsvParam csvParam = new CsvParam();
+    	csvParam.parallel = true;
+    	csvParam.setUp();
+    	try {
+	    	int[] rows = new int[]{1, 10, 1000, 100000, -1};
+	    	for(int row : rows) {
+	    		System.out.println("Start " + row);
+	        	csvParam.nbRows = row;
+		        try(Reader reader = csvParam.getReader()) {
+		            CsvReader<String[]> csvReader = StringArrayCsvReader.builder().build(reader);
+		            String[] next;
+		            do {
+		                next = csvReader.next();
+		                if(next == null) {
+		                    break;
+		                }
+		            } while(true);
+		        }
+	    		System.out.println("End " + row);
+	    	}
+    	} finally {
+    		csvParam.tearDown();
+    	}
     }
 
 }
