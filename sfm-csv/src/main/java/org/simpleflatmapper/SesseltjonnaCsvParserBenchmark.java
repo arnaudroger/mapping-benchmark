@@ -1,6 +1,7 @@
 package org.simpleflatmapper;
 
 import java.io.Reader;
+import java.util.Arrays;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -52,8 +53,7 @@ public class SesseltjonnaCsvParserBenchmark {
     @Benchmark
     public void parseCsv(Blackhole blackhole, CsvParam csvParam) throws Exception {
         try(Reader reader = csvParam.getReader()) {
-            CsvReader<String[]> csvReader = StringArrayCsvReader.builder().build(csvParam.getReader());
-
+            CsvReader<String[]> csvReader = StringArrayCsvReader.builder().build(reader);
             String[] next;
             do {
                 next = csvReader.next();
