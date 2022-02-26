@@ -44,7 +44,7 @@
 
 
         <batoo-jpa.version>2.0.1.2</batoo-jpa.version>
-        <cassandra.version>3.11.4</cassandra.version>
+        <cassandra.version>3.11.12</cassandra.version>
         <cassandra-driver-mapping.version>3.7.1</cassandra-driver-mapping.version>
         <eclipselink.version>2.7.4</eclipselink.version>
         <h2.version>1.4.199</h2.version>
